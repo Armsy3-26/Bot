@@ -12,9 +12,7 @@ class ChatController extends GetxController {
 
   socketConnection() {
     socket.onConnect((data) {
-      if (data != null) {
-        print(data + "lol");
-      }
+      if (data != null) {}
       socket.emit("connection", {
         'username': 'anonymous',
       });
@@ -34,7 +32,7 @@ class ChatController extends GetxController {
     });*/
     socket.on('message', (data) {
       //DateTime now = DateTime.now();
-      print(data);
+
       if (data['feedback'] == "Sent-Status") {
         print(data);
       } else {

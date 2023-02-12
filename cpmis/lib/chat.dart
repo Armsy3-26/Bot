@@ -215,6 +215,7 @@ class _ChatPageState extends State<ChatPage> {
                                                     SizedBox(
                                                       width: 250,
                                                       child: Card(
+                                                        elevation: 0,
                                                         color:
                                                             Colors.transparent,
                                                         child: AnimatedTextKit(

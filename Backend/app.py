@@ -1,6 +1,6 @@
 from flask import Flask,request
 from flask_socketio import SocketIO,emit,send
-import re
+from model import load_dataset, process
 
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ users  = {}
 #on connect function
 @socketio.on('connect')
 def on_connect(socket):
-
+    load_dataset()
     #print("Connected")
     pass
 
@@ -48,8 +48,11 @@ def message(payload):
     user_message = payload['message']
     user_name  = payload['username']
     try:
+        feedback  = process(user_message)
 
-        emit("message", {"message": "I'm CPIMS user friendly chatbot, currently I'm currently offline for active development.I'll be back soon."}, room=users[user_name])
+        #print(feedback)
+
+        emit("message", {"message": feedback}, room=users[user_name])
 
     except Exception as e:
         if e.__class__.__name__ == 'KeyError':

@@ -8,14 +8,17 @@ Created on Sun Feb 12 12:21:53 2023
 
 import gensim
 from gensim import corpora
-from dataset import data
+from dataset import data,unknown_query_responses
+import random
 
-
-sentence  = input("Enter something: ")
 
 corpus  = []
 
+accurate_queries = {}
+threshold  = 0.6
+
 def load_dataset():
+    corpus.clear()
     for queries in data['questions']:
 
         corpus.append(queries)
@@ -24,47 +27,53 @@ load_dataset()
 
 ###use simple preprocess
 
-sentence = gensim.utils.simple_preprocess(sentence)
-token_corpus   =[gensim.utils.simple_preprocess(doc) for doc in corpus]
+def process(sentence):
+    accurate_queries.clear()
+    sentence = gensim.utils.simple_preprocess(sentence)
+    token_corpus   =[gensim.utils.simple_preprocess(doc) for doc in corpus]
 
-##create a dictionary #take corpus as an argument
+    ##create a dictionary #take corpus as an argument
 
-dictionary = corpora.Dictionary(token_corpus)
+    dictionary = corpora.Dictionary(token_corpus)
 
-#convert to bow
+    #convert to bow
 
-sent_bow  = dictionary.doc2bow(sentence)
-corpus_bow = [dictionary.doc2bow(doc) for doc in token_corpus]
+    sent_bow  = dictionary.doc2bow(sentence)
+    corpus_bow = [dictionary.doc2bow(doc) for doc in token_corpus]
 
 
-#convert to tf-idf
+    #convert to tf-idf
 
-tfidf = gensim.models.TfidfModel(corpus_bow, dictionary=dictionary)
+    tfidf = gensim.models.TfidfModel(corpus_bow, dictionary=dictionary)
 
-sent_tfidf = tfidf[sent_bow]
+    sent_tfidf = tfidf[sent_bow]
 
-corpus_tfidf  = tfidf[corpus_bow]
+    corpus_tfidf  = tfidf[corpus_bow]
 
-##check similarity 
+    ##check similarity 
 
-similarity  = [gensim.matutils.cossim(sent_tfidf, doc) for doc in corpus_tfidf]
+    similarity  = [gensim.matutils.cossim(sent_tfidf, doc) for doc in corpus_tfidf]
 
 #filtered_sent  = [doc for sim,doc in zip(similarity, corpus) if sim >= 0.5]
 
-accurate_queries = {}
-threshold  = 0.5 
-def sort_data():
     for sim,doc in zip(similarity, corpus):
         if sim >= threshold:
             accurate_queries[doc] = sim
     #sorting the dictionaries
     if len(accurate_queries) > 1:
         sorted_queries = sorted(accurate_queries.items(), key=lambda x: x[1], reverse=True)
-        print(accurate_queries)
-        print(sorted_queries[0][0])
-    else:
+        
+        key_index  = corpus.index(sorted_queries[0][0])
+        
+        return data['answers'][key_index]
+        
+    elif len(accurate_queries) == 1: 
         key = list(accurate_queries.keys())[0]
 
-        print(key)
+        key_index  = corpus.index(key)
+        
+        return data['answers'][key_index]
 
-sort_data()
+    else:
+        feedback = random.choice(unknown_query_responses)
+        return feedback

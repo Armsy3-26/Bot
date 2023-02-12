@@ -16,8 +16,6 @@ data ={
       "C++ programming language",
       "more on deep learning",
       "Flutter framework",
-      "Can AI corrupt a little solve the protein folding problem?",
-      'What solutions to the protein folding problem in AI solve'
     ],
     "answers": [
       "The Internet is a global network of computers and servers that are connected to one another, allowing users to share and access information and resources. It is a decentralized system that enables communication and data exchange between computers and other devices across the world.",
@@ -36,8 +34,7 @@ data ={
       "C++ is a general-purpose, high-level programming language that provides low-level control over system resources while also supporting object-oriented programming. It's commonly used for system programming, game development, and embedded systems.",
       "Deep learning is a subfield of machine learning that uses neural networks with multiple layers to learn from and make predictions or decisions based on data. It's used for tasks such as image and speech recognition, NLP, and autonomous vehicles.",
       "Flutter is a free and open-source mobile app development framework created by Google. It uses the Dart programming language and provides a modern, reactive programming model for building high-performance and cross-platform apps.",
-      "Technology, especially the field of Artificial Intelligence can help in predincting the  three data structure of proteins from it's amino acids using transformers instead of neural networks"
-      'delete last two craps'
+     
 
 
     ]
