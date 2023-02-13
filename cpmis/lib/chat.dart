@@ -51,13 +51,6 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ],
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                print("");
-              },
-              icon: const Icon(Icons.info))
-        ],
         centerTitle: true,
       ),
       body: Stack(
@@ -93,7 +86,7 @@ class _ChatPageState extends State<ChatPage> {
                                   height: 5,
                                 ),
                                 Container(
-                                  height: 80,
+                                  height: 150,
                                   width: 240,
                                   decoration: BoxDecoration(
                                       color: Colors.grey.shade200,
@@ -104,8 +97,9 @@ class _ChatPageState extends State<ChatPage> {
                                       width: 220,
                                       child: AnimatedTextKit(
                                         animatedTexts: [
+                                          // "Hi! I'm a chatbot for the child protection management system. I can help you report and track cases, answer basic questions and guide you through the process. Let's work together to keep children safe!"
                                           TyperAnimatedText(
-                                              "Hi! I'm a chatbot for the child protection management system. I can help you report and track cases, answer basic questions and guide you through the process. Let's work together to keep children safe!")
+                                              "Hi! I'm a chatbot, still in active development.I can talk about the internet, the various programming languages used to build websites and software, the protein folding problem as a challenging computational issue, and the  blockchain technology among other few topics.")
                                         ],
                                       ),
                                     ),
@@ -266,7 +260,7 @@ class _ChatPageState extends State<ChatPage> {
                           children: [
                             SizedBox(
                               // color: Colors.blue,
-                              height: 55,
+                              height: 50,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 padding: const EdgeInsets.all(10.0),
@@ -283,7 +277,11 @@ class _ChatPageState extends State<ChatPage> {
                                           child: Chip(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              label: Text(e)),
+                                              label: Text(
+                                                e,
+                                                style: const TextStyle(
+                                                    fontSize: 10),
+                                              )),
                                         ),
                                         const SizedBox(
                                           width: 2,
@@ -325,7 +323,8 @@ class _ChatPageState extends State<ChatPage> {
                                             hintStyle: TextStyle(
                                                 fontSize: 14,
                                                 color: Colors.grey.shade700),
-                                            hintText: 'cpims:)-',
+                                            hintText:
+                                                "cpims:)- I'm a limitied edition.",
                                             border: InputBorder.none,
                                             filled: true,
                                             fillColor: Colors.grey.shade100,
