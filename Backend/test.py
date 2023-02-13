@@ -1,6 +1,1 @@
-users  = {'name': 'armstrong'}
-
-
-users['name'] = 'hello'
-
-print(users['ol'])
+#just a file for random tests

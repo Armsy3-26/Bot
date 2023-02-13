@@ -1,6 +1,8 @@
+import random
 from flask import Flask,request
 from flask_socketio import SocketIO,emit,send
 from model import load_dataset, process
+from dataset import salutations, salutation_feedback,salutations1, salutation_feedback1
 
 
 app = Flask(__name__)
@@ -35,8 +37,7 @@ def save_session(payload):
         #payload = {"message" : "I'm CPIMS user friendly chatbot, currently I'm currently offline for active development.I'll be back soon."}
         
         #emit("initialResponse",  payload, room=sesssion_id)
-       
-
+    
     except Exception as e:
         if e.__class__.__name__  == 'KeyError':
             pass
@@ -47,16 +48,25 @@ def message(payload):
     #take in user message, and username
     user_message = payload['message']
     user_name  = payload['username']
-    try:
-        feedback  = process(user_message)
+    if user_message.lower().strip() in salutations:
+        random_salutation = random.choice(salutation_feedback)
+        emit("message", {"message": random_salutation}, room=users[user_name])
 
-        #print(feedback)
+    elif user_message.lower().strip() in salutations1:
+        random_salutation = random.choice(salutation_feedback1)
+        emit("message", {"message": random_salutation}, room=users[user_name])
 
-        emit("message", {"message": feedback}, room=users[user_name])
+    else:
+        try:
+            feedback  = process(user_message)
 
-    except Exception as e:
-        if e.__class__.__name__ == 'KeyError':
-            pass
+            #print(feedback)
+
+            emit("message", {"message": feedback}, room=users[user_name])
+
+        except Exception as e:
+            if e.__class__.__name__ == 'KeyError':
+                pass
     
 
 #takes note of users who have been disconnected.....a bit useless here

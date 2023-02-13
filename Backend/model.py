@@ -8,6 +8,7 @@ Created on Sun Feb 12 12:21:53 2023
 
 import gensim
 from gensim import corpora
+from process import preprocess
 from dataset import data,unknown_query_responses
 import random
 
@@ -15,13 +16,13 @@ import random
 corpus  = []
 
 accurate_queries = {}
-threshold  = 0.6
+threshold  = 0.5
 
 def load_dataset():
     corpus.clear()
     for queries in data['questions']:
-
-        corpus.append(queries)
+        cleaned_queries = preprocess(queries)
+        corpus.append(cleaned_queries)
 
 load_dataset()
 
@@ -29,7 +30,8 @@ load_dataset()
 
 def process(sentence):
     accurate_queries.clear()
-    sentence = gensim.utils.simple_preprocess(sentence)
+    cleaned_question = preprocess(sentence)
+    sentence = gensim.utils.simple_preprocess(cleaned_question)
     token_corpus   =[gensim.utils.simple_preprocess(doc) for doc in corpus]
 
     ##create a dictionary #take corpus as an argument
