@@ -24,7 +24,7 @@ class _ChatPageState extends State<ChatPage> {
   void initState() {
     super.initState();
     chatController.socket = IO.io(
-        'http://51.255.62.21:3000/',
+        'http://localhost:3000/',
         IO.OptionBuilder().setTransports(['websocket']).setQuery(
             {'username': "armsy"}).build());
     chatController.socketConnection();
@@ -94,12 +94,12 @@ class _ChatPageState extends State<ChatPage> {
                                           Radius.circular(10))),
                                   child: Center(
                                     child: SizedBox(
-                                      width: 220,
+                                      width: 200,
                                       child: AnimatedTextKit(
                                         animatedTexts: [
                                           // "Hi! I'm a chatbot for the child protection management system. I can help you report and track cases, answer basic questions and guide you through the process. Let's work together to keep children safe!"
                                           TyperAnimatedText(
-                                              "Hi! I'm a chatbot, still in active development.I can talk about the internet, the various programming languages used to build websites and software, the protein folding problem as a challenging computational issue, and the  blockchain technology among other few topics.")
+                                              "I'm CPIMS user friendly chatbot, currently I'm currently offline for active development.I'll be back soon.")
                                         ],
                                       ),
                                     ),

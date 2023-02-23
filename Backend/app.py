@@ -1,7 +1,7 @@
 import random
 from flask import Flask,request
 from flask_socketio import SocketIO,emit,send
-from model import load_dataset, process
+from model import load_corpus, check_similarity,get_feedback
 from dataset import salutations, salutation_feedback,salutations1, salutation_feedback1
 
 
@@ -18,7 +18,7 @@ users  = {}
 #on connect function
 @socketio.on('connect')
 def on_connect(socket):
-    load_dataset()
+    load_corpus()
     #print("Connected")
     pass
 
@@ -58,15 +58,18 @@ def message(payload):
 
     else:
         try:
-            feedback  = process(user_message)
-
-            #print(feedback)
+            check_similarity(user_message)
+            feedback = get_feedback()
+        
+            print(feedback)
 
             emit("message", {"message": feedback}, room=users[user_name])
 
         except Exception as e:
             if e.__class__.__name__ == 'KeyError':
                 pass
+            else:
+                print(e)
     
 
 #takes note of users who have been disconnected.....a bit useless here
