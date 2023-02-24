@@ -60,8 +60,6 @@ def message(payload):
         try:
             check_similarity(user_message)
             feedback = get_feedback()
-        
-            print(feedback)
 
             emit("message", {"message": feedback}, room=users[user_name])
 

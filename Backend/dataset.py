@@ -1,4 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Feb 23 12:21:53 2023
 
+@author: armsy326
+"""
 
 salutations = [
               "hello",
@@ -26,13 +32,10 @@ salutation_feedback1 = [
 
 
 
-unknown_query_responses = [    
-                  "I'm sorry, I'm a chatbot, not a miracle worker.",
-                  "I'm sorry, I'm a machine, not a mind reader.",    
+unknown_query_responses = [       
                   "I'm sorry, but I only have the information you give me.",    
                   "I'm sorry, I'm not a genius, just a highly advanced robot.",    
-                  "I'm sorry, my database is vast, but not infinite.",    
-                  "I'm sorry, I'm an AI, not a superhero.",    
+                  "I'm sorry, my database is vast, but not infinite.", 
                   "I'm sorry, I don't know the answer to that, but I'm sure Google does.",    
                   "I'm sorry, I'm just a computer program, not a philosopher.",    
                   "I'm sorry, I don't have all the answers, just most of them.",    

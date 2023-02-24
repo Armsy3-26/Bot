@@ -34,7 +34,7 @@ def load_corpus():
         i = i+1
 
 def check_similarity(query):
-    print("Here")
+    #print("Here")
     text_similarity.clear()
     #create tokens for the query and the corpus
     sent   = gensim.utils.simple_preprocess(query)
@@ -71,11 +71,11 @@ def check_similarity(query):
 
 
 def get_feedback():
-    print("Trying here")
+    
     #process_corpus()
     if len(text_similarity) == 0:
         feedback = random.choices(unknown_query_responses)
-        return feedback
+        return feedback[0]
         
     elif len(text_similarity) > 1:
         #sort it , with highest similarity coming first

@@ -90,11 +90,11 @@ class ChatController extends GetxController {
   List chat = [];
 
   List hotWords = [
-    "What is internet?",
     "Hello",
-    "Blockchain technology",
-    "Bye",
-    "computational programming",
-    "protein folding problem"
+    "reset my password",
+    "who created you?",
+    "Thanks",
+    "open a new account",
+    "How do I update my details"
   ];
 }

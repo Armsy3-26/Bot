@@ -53,8 +53,8 @@
                 "Who you are?"
             ],
             "responses": [
-                "I'm a CIMPS virtual assistant",
-                "I'm CIMPS chatbot"
+                "I'm a CIMPS virtual assistant.",
+                "I'm CIMPS chatbot."
             ]
         },
         {
@@ -135,6 +135,22 @@
             "responses": [
                 "kindly click on this link to view and download the photos.",
                 "Iam sorry for the delay its not intentional do understand"
+            ]
+        },
+        {
+            "tag": "creator",
+            "patterns": [
+                "Who created you?",
+                "When was you created?",
+                "Who was your creator?",
+                "WHo devloped you?",
+                "who were your developers",
+                "when were you created?"
+            ],
+            "responses": [
+                "I was created by 2 students from Kabarak University during a hackathon in February 2023 as an alternative to an inferior bot. I am a product of their innovation and dedication to providing the best possible service to users.",
+                "I was created by Kabarak University developers during a hackathon in February 2023. My purpose is to serve as an alternative to another chatbot, and to provide users with enhanced features and functionality.",
+                "I was created by developers at Kabarak University during a February 2023 hackathon. The aim was to provide a solution for child protection managers to improve their work in safeguarding children."
             ]
         },
         {
