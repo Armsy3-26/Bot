@@ -1,7 +1,7 @@
 # CPMIS CHATBOT 
 ## Introducing a New Chatbot :zap: :zap:
 _This is an alternative chatbot to the one showcased during the hackathon on 19 Feb 2023. It offers both speed and efficieny in prediction, while using less computational power._
-To test the app download it by clicking _http://51.255.62.21:5000/downloadcpmisbot_
+To test the app download it by clicking _https://www.mediafire.com/file/ps2h9pabsojun0h/cpmis.apk/file_
 
 | Features                 | Our New Chatbot | "Successful Bot"|
 | ----------------------- | --------------- | -------------- |
